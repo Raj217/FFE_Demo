@@ -31,7 +31,7 @@ class _AuthScreenState extends State<AuthScreen> {
   Widget build(BuildContext context) {
     Size screen = MediaQuery.of(context).size;
     return ChangeNotifierProvider(
-      create: (BuildContext context) => LoginCharacterStatesProvider(),
+      create: (BuildContext context) => SignupCharacterStatesProvider(),
       child: Builder(builder: (context) {
         return Scaffold(
           body: SafeArea(

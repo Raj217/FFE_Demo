@@ -24,7 +24,7 @@ class _LoginFormState extends State<LoginForm> {
   bool obscurePassword = true;
 
   void onTapTextField(
-    LoginCharacterStatesProvider loginCharacter,
+    SignupCharacterStatesProvider loginCharacter,
     String? text,
     TextStyle? style,
     GlobalKey key, {
@@ -46,7 +46,7 @@ class _LoginFormState extends State<LoginForm> {
   }
 
   void onTapOutsideTextField(
-    LoginCharacterStatesProvider loginCharacter,
+    SignupCharacterStatesProvider loginCharacter,
   ) {
     loginCharacter.isChecking = false;
     loginCharacter.isHandsUp = false;
@@ -55,8 +55,8 @@ class _LoginFormState extends State<LoginForm> {
   @override
   Widget build(BuildContext context) {
     final TextStyle? textStyle = Theme.of(context).textTheme.bodyMedium;
-    return Consumer<LoginCharacterStatesProvider>(
-        builder: (context, LoginCharacterStatesProvider loginCharacter, _) {
+    return Consumer<SignupCharacterStatesProvider>(
+        builder: (context, SignupCharacterStatesProvider loginCharacter, _) {
       return Container(
         color: Theme.of(context).scaffoldBackgroundColor,
         padding: const EdgeInsets.fromLTRB(10, 50, 10, 0),

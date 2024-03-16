@@ -3,7 +3,7 @@ import 'package:ffe_demo_app/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 
-class LoginCharacterStatesProvider extends ChangeNotifier {
+class SignupCharacterStatesProvider extends ChangeNotifier {
   SMIBool? _isChecking;
   SMITrigger? _trigSuccess;
   SMITrigger? _trigFail;
