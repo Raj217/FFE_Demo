@@ -1,4 +1,5 @@
 import 'package:ffe_demo_app/pages/auth/login/login.dart';
+import 'package:ffe_demo_app/pages/auth/signup/signup.dart';
 import 'package:ffe_demo_app/pages/auth/widgets/login_character_animation.dart';
 import 'package:ffe_demo_app/states/states.dart';
 import 'package:flutter/material.dart';
@@ -53,7 +54,7 @@ class _AuthScreenState extends State<AuthScreen> {
                           width: 10,
                           color: Theme.of(context).scaffoldBackgroundColor,
                         ),
-                        LoginForm(
+                        SignupForm(
                           onTapSignUp: () {
                             pageController.animateToPage(
                               2,

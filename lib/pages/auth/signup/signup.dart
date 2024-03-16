@@ -20,9 +20,11 @@ class _SignupFormState extends State<SignupForm> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController = TextEditingController();
   final GlobalKey emailWidgetKey = GlobalKey();
   final GlobalKey passwordWidgetKey = GlobalKey();
   final GlobalKey nameWidgetKey = GlobalKey();
+  final GlobalKey confirmPasswordWidgetKey = GlobalKey();
   bool obscurePassword = true;
 
   void onTapTextField(
@@ -155,12 +157,47 @@ class _SignupFormState extends State<SignupForm> {
                         });
                       },
                     ),
+                    CustomTextField(
+                      key: confirmPasswordWidgetKey,
+                      label: "Confirm Password",
+                      controller: confirmPasswordController,
+                      validator: Validator.isPasswordValid,
+                      obscureText: obscurePassword,
+                      onTap: () {
+                        onTapTextField(
+                          signupCharacter,
+                          confirmPasswordController.text,
+                          textStyle,
+                          confirmPasswordWidgetKey,
+                          checkForPassword: true,
+                        );
+                      },
+                      onTapOutside: () {
+                        onTapOutsideTextField(signupCharacter);
+                      },
+                      textStyle: textStyle,
+                      onChanged: (String? text) {
+                        onTapTextField(
+                          signupCharacter,
+                          confirmPasswordController.text,
+                          textStyle,
+                          confirmPasswordWidgetKey,
+                          checkForPassword: true,
+                        );
+                      },
+                      onSecretChangeButtonPressed: (bool wasObscured) {
+                        setState(() {
+                          obscurePassword = !wasObscured;
+                          signupCharacter.isHandsUp = obscurePassword;
+                        });
+                      },
+                    ),
                     CustomElevatedButton(
                       onPressed: () {
                         signupCharacter.isChecking = false;
                         signupCharacter.isHandsUp = false;
                       },
-                      child: const Text("Login"),
+                      child: const Text("Signup"),
                     ),
                   ].separate(10),
                 ),
@@ -168,7 +205,7 @@ class _SignupFormState extends State<SignupForm> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Don't have an account? ",
+                      "Already have an account? ",
                       style: Theme.of(context).textTheme.labelMedium,
                     ),
                     CustomTextButton(
@@ -177,7 +214,7 @@ class _SignupFormState extends State<SignupForm> {
                         widget.onTapSignUp();
                       },
                       child: Text(
-                        "Sign Up",
+                        "Login",
                         style: Theme.of(context)
                             .textTheme
                             .labelMedium
