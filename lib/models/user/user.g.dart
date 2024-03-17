@@ -9,13 +9,13 @@ part of 'user.dart';
 _$UserModelImpl _$$UserModelImplFromJson(Map<String, dynamic> json) =>
     _$UserModelImpl(
       id: json['_id'] as String?,
-      name: json['name'] as String,
-      email: json['email'] as String,
+      username: json['username'] as String,
+      mail: json['mail'] as String,
     );
 
 Map<String, dynamic> _$$UserModelImplToJson(_$UserModelImpl instance) =>
     <String, dynamic>{
       '_id': instance.id,
-      'name': instance.name,
-      'email': instance.email,
+      'username': instance.username,
+      'mail': instance.mail,
     };

@@ -9,7 +9,7 @@ class UserModel with _$UserModel {
   /// For the simplicity of the app we will be storing only
   /// * [id] of the user
   /// * [name] of the user
-  /// * [email] of the user
+  /// * [mail] of the user
   ///
   /// The password is not stored and is directly passed to the controller while
   /// the user sign up or login
@@ -17,8 +17,8 @@ class UserModel with _$UserModel {
 
   const factory UserModel({
     @JsonKey(name: '_id') String? id,
-    required String name,
-    required String email,
+    required String username,
+    required String mail,
   }) = _UserModel;
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>

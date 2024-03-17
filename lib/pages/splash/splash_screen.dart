@@ -1,6 +1,10 @@
+import 'package:ffe_demo_app/pages/home/homepage.dart';
+import 'package:ffe_demo_app/states/auth/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ffe_demo_app/config/config.dart';
 import 'package:ffe_demo_app/pages/pages.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {
   static const String route = "/splash-screen";
@@ -11,19 +15,35 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  @override
-  void initState() {
-    super.initState();
-    Future.delayed(
-      const Duration(seconds: 1),
-      () {
+  Future<void> init() async {
+    await dotenv.load();
+
+    bool isLoggedIn = await Provider.of<AuthProvider>(context, listen: false)
+        .checkIfUserIsLoggedIn();
+
+    if (isLoggedIn) {
+      if (mounted) {
+        Navigator.pushNamedAndRemoveUntil(
+          context,
+          Homepage.route,
+          (route) => false,
+        );
+      }
+    } else {
+      if (mounted) {
         Navigator.pushNamedAndRemoveUntil(
           context,
           AuthScreen.route,
           (route) => false,
         );
-      },
-    );
+      }
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    init();
   }
 
   @override

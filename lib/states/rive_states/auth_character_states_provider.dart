@@ -3,7 +3,7 @@ import 'package:ffe_demo_app/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 
-class SignupCharacterStatesProvider extends ChangeNotifier {
+class AuthCharacterStatesProvider extends ChangeNotifier {
   SMIBool? _isChecking;
   SMITrigger? _trigSuccess;
   SMITrigger? _trigFail;
@@ -32,24 +32,50 @@ class SignupCharacterStatesProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void success() {
+  Future<void> success() async {
     _trigSuccess?.fire();
+
     notifyListeners();
+    // Approximate time the fire takes
+    await Future.delayed(const Duration(milliseconds: 1300));
   }
 
-  void fail() {
+  Future<void> fail() async {
     _trigFail?.fire();
+
     notifyListeners();
+    // Approximate time the fire takes
+    await Future.delayed(const Duration(milliseconds: 1300));
   }
 
-  void look({
+  Future<void> _animateLookValue(double newValue) async {
+    if (_numLook == null) {
+      _numLook?.value = newValue;
+    } else {
+      double current = _numLook!.value + 1;
+      bool lookLeft = current > newValue;
+
+      while ((lookLeft && current > newValue) ||
+          (!lookLeft && current < newValue)) {
+        _numLook?.value = current;
+        if (lookLeft) {
+          current--;
+        } else {
+          current++;
+        }
+        await Future.delayed(const Duration(milliseconds: 20));
+      }
+    }
+  }
+
+  Future<void> look({
     required String text,
     required TextStyle style,
     required double maxFieldWidth,
-  }) {
+  }) async {
     double width = UIUtils.getTextSize(text: text, style: style).width;
     width = min(width, maxFieldWidth);
-    _numLook?.value = (width / maxFieldWidth) * 100;
+    await _animateLookValue((width / maxFieldWidth) * 100);
     notifyListeners();
   }
 }

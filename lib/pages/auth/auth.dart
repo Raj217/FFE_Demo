@@ -1,6 +1,6 @@
 import 'package:ffe_demo_app/pages/auth/login/login.dart';
 import 'package:ffe_demo_app/pages/auth/signup/signup.dart';
-import 'package:ffe_demo_app/pages/auth/widgets/login_character_animation.dart';
+import 'widgets/auth_character_animation.dart';
 import 'package:ffe_demo_app/states/states.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -32,7 +32,7 @@ class _AuthScreenState extends State<AuthScreen> {
   Widget build(BuildContext context) {
     Size screen = MediaQuery.of(context).size;
     return ChangeNotifierProvider(
-      create: (BuildContext context) => SignupCharacterStatesProvider(),
+      create: (BuildContext context) => AuthCharacterStatesProvider(),
       child: Builder(builder: (context) {
         return Scaffold(
           body: SafeArea(
@@ -42,7 +42,7 @@ class _AuthScreenState extends State<AuthScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   const Expanded(
-                    child: LoginCharacterAnimation(),
+                    child: AuthCharacterAnimation(),
                   ),
                   Expanded(
                     flex: 2,
@@ -54,20 +54,20 @@ class _AuthScreenState extends State<AuthScreen> {
                           width: 10,
                           color: Theme.of(context).scaffoldBackgroundColor,
                         ),
-                        SignupForm(
+                        LoginForm(
                           onTapSignUp: () {
                             pageController.animateToPage(
                               2,
-                              duration: Duration(milliseconds: 500),
+                              duration: const Duration(milliseconds: 500),
                               curve: Curves.easeInBack,
                             );
                           },
                         ),
-                        LoginForm(
+                        SignupForm(
                           onTapSignUp: () {
                             pageController.animateToPage(
                               1,
-                              duration: Duration(milliseconds: 500),
+                              duration: const Duration(milliseconds: 500),
                               curve: Curves.easeInBack,
                             );
                           },

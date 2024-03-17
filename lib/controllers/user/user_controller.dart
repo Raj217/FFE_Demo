@@ -80,7 +80,7 @@ class UserController {
 /// This class is necessary for storing extra information with the user model
 /// like [token]
 class UserControllerResponse {
-  final UserModel model;
+  final UserModel user;
   final String token;
-  const UserControllerResponse({required this.model, required this.token});
+  const UserControllerResponse({required this.user, required this.token});
 }

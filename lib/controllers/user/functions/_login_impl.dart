@@ -5,10 +5,10 @@ Future<UserControllerResponse> _loginImpl({
   required String password,
 }) async {
   // Preparing the body to send.
-  Map body = {"email": email, "password": password};
+  Map body = {"mail": email, "password": password};
   String bodyEncoded = jsonEncode(body);
 
-  Response response = await NetworkEngine.getDio().post(
+  Response response = await NetworkEngine.getDio().get(
     UserController._getLoginPath(),
     data: bodyEncoded,
   );
@@ -16,7 +16,7 @@ Future<UserControllerResponse> _loginImpl({
     UserModel user = UserModel.fromJson(response.data["user"]);
     String token = response.data["token"];
 
-    return UserControllerResponse(model: user, token: token);
+    return UserControllerResponse(user: user, token: token);
   }
   throw Exception("Something went wrong. Please try again.");
 }
