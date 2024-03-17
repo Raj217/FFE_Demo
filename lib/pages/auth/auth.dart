@@ -19,7 +19,7 @@ class _AuthScreenState extends State<AuthScreen> {
   @override
   void initState() {
     super.initState();
-    pageController = PageController(initialPage: 0);
+    pageController = PageController(initialPage: 1);
   }
 
   @override
