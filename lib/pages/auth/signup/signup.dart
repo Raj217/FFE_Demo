@@ -61,169 +61,171 @@ class _SignupFormState extends State<SignupForm> {
     final TextStyle? textStyle = Theme.of(context).textTheme.bodyMedium;
     return Consumer<SignupCharacterStatesProvider>(
         builder: (context, SignupCharacterStatesProvider signupCharacter, _) {
-          return Container(
-            color: Theme.of(context).scaffoldBackgroundColor,
-            padding: const EdgeInsets.fromLTRB(10, 50, 10, 0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  children: [
-                    CustomTextField(
-                      key: nameWidgetKey,
-                      keyboardType: TextInputType.name,
-                      label: "Name",
-                      controller: nameController,
-                      onTap: () {
-                        onTapTextField(
-                          signupCharacter,
-                          nameController.text,
-                          textStyle,
-                          nameWidgetKey,
-                        );
-                      },
-                      onTapOutside: () {
-                        onTapOutsideTextField(signupCharacter);
-                      },
-                      textStyle: textStyle,
-                      onChanged: (String? text) {
-                        onTapTextField(
-                          signupCharacter,
-                          nameController.text,
-                          textStyle,
-                          nameWidgetKey,
-                        );
-                      },
-                    ),
-                    CustomTextField(
-                      key: emailWidgetKey,
-                      keyboardType: TextInputType.emailAddress,
-                      label: "Email",
-                      controller: emailController,
-                      validator: Validator.isEmailValid,
-                      onTap: () {
-                        onTapTextField(
-                          signupCharacter,
-                          emailController.text,
-                          textStyle,
-                          emailWidgetKey,
-                        );
-                      },
-                      onTapOutside: () {
-                        onTapOutsideTextField(signupCharacter);
-                      },
-                      textStyle: textStyle,
-                      onChanged: (String? text) {
-                        onTapTextField(
-                          signupCharacter,
-                          emailController.text,
-                          textStyle,
-                          emailWidgetKey,
-                        );
-                      },
-                    ),
-                    CustomTextField(
-                      key: passwordWidgetKey,
-                      label: "Password",
-                      controller: passwordController,
-                      validator: Validator.isPasswordValid,
-                      obscureText: obscurePassword,
-                      onTap: () {
-                        onTapTextField(
-                          signupCharacter,
-                          passwordController.text,
-                          textStyle,
-                          passwordWidgetKey,
-                          checkForPassword: true,
-                        );
-                      },
-                      onTapOutside: () {
-                        onTapOutsideTextField(signupCharacter);
-                      },
-                      textStyle: textStyle,
-                      onChanged: (String? text) {
-                        onTapTextField(
-                          signupCharacter,
-                          passwordController.text,
-                          textStyle,
-                          passwordWidgetKey,
-                          checkForPassword: true,
-                        );
-                      },
-                      onSecretChangeButtonPressed: (bool wasObscured) {
-                        setState(() {
-                          obscurePassword = !wasObscured;
-                          signupCharacter.isHandsUp = obscurePassword;
-                        });
-                      },
-                    ),
-                    CustomTextField(
-                      key: confirmPasswordWidgetKey,
-                      label: "Confirm Password",
-                      controller: confirmPasswordController,
-                      validator: Validator.isPasswordValid,
-                      obscureText: obscurePassword,
-                      onTap: () {
-                        onTapTextField(
-                          signupCharacter,
-                          confirmPasswordController.text,
-                          textStyle,
-                          confirmPasswordWidgetKey,
-                          checkForPassword: true,
-                        );
-                      },
-                      onTapOutside: () {
-                        onTapOutsideTextField(signupCharacter);
-                      },
-                      textStyle: textStyle,
-                      onChanged: (String? text) {
-                        onTapTextField(
-                          signupCharacter,
-                          confirmPasswordController.text,
-                          textStyle,
-                          confirmPasswordWidgetKey,
-                          checkForPassword: true,
-                        );
-                      },
-                      onSecretChangeButtonPressed: (bool wasObscured) {
-                        setState(() {
-                          obscurePassword = !wasObscured;
-                          signupCharacter.isHandsUp = obscurePassword;
-                        });
-                      },
-                    ),
-                    CustomElevatedButton(
-                      onPressed: () {
-                        signupCharacter.isChecking = false;
-                        signupCharacter.isHandsUp = false;
-                      },
-                      child: const Text("Signup"),
-                    ),
-                  ].separate(10),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Already have an account? ",
-                      style: Theme.of(context).textTheme.labelMedium,
-                    ),
-                    CustomTextButton(
-                      onPressed: () {
-                        onTapOutsideTextField(signupCharacter);
-                        widget.onTapSignUp();
-                      },
-                      child: Text(
-                        "Login",
-                        style: Theme.of(context)
-                            .textTheme
-                            .labelMedium
-                            ?.copyWith(decoration: TextDecoration.underline),
+          return SingleChildScrollView(
+            child: Container(
+              color: Theme.of(context).scaffoldBackgroundColor,
+              padding: const EdgeInsets.fromLTRB(10, 50, 10, 0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    children: [
+                      CustomTextField(
+                        key: nameWidgetKey,
+                        keyboardType: TextInputType.name,
+                        label: "Name",
+                        controller: nameController,
+                        onTap: () {
+                          onTapTextField(
+                            signupCharacter,
+                            nameController.text,
+                            textStyle,
+                            nameWidgetKey,
+                          );
+                        },
+                        onTapOutside: () {
+                          onTapOutsideTextField(signupCharacter);
+                        },
+                        textStyle: textStyle,
+                        onChanged: (String? text) {
+                          onTapTextField(
+                            signupCharacter,
+                            nameController.text,
+                            textStyle,
+                            nameWidgetKey,
+                          );
+                        },
                       ),
-                    )
-                  ],
-                )
-              ],
+                      CustomTextField(
+                        key: emailWidgetKey,
+                        keyboardType: TextInputType.emailAddress,
+                        label: "Email",
+                        controller: emailController,
+                        validator: Validator.isEmailValid,
+                        onTap: () {
+                          onTapTextField(
+                            signupCharacter,
+                            emailController.text,
+                            textStyle,
+                            emailWidgetKey,
+                          );
+                        },
+                        onTapOutside: () {
+                          onTapOutsideTextField(signupCharacter);
+                        },
+                        textStyle: textStyle,
+                        onChanged: (String? text) {
+                          onTapTextField(
+                            signupCharacter,
+                            emailController.text,
+                            textStyle,
+                            emailWidgetKey,
+                          );
+                        },
+                      ),
+                      CustomTextField(
+                        key: passwordWidgetKey,
+                        label: "Password",
+                        controller: passwordController,
+                        validator: Validator.isPasswordValid,
+                        obscureText: obscurePassword,
+                        onTap: () {
+                          onTapTextField(
+                            signupCharacter,
+                            passwordController.text,
+                            textStyle,
+                            passwordWidgetKey,
+                            checkForPassword: true,
+                          );
+                        },
+                        onTapOutside: () {
+                          onTapOutsideTextField(signupCharacter);
+                        },
+                        textStyle: textStyle,
+                        onChanged: (String? text) {
+                          onTapTextField(
+                            signupCharacter,
+                            passwordController.text,
+                            textStyle,
+                            passwordWidgetKey,
+                            checkForPassword: true,
+                          );
+                        },
+                        onSecretChangeButtonPressed: (bool wasObscured) {
+                          setState(() {
+                            obscurePassword = !wasObscured;
+                            signupCharacter.isHandsUp = obscurePassword;
+                          });
+                        },
+                      ),
+                      CustomTextField(
+                        key: confirmPasswordWidgetKey,
+                        label: "Confirm Password",
+                        controller: confirmPasswordController,
+                        validator: Validator.isPasswordValid,
+                        obscureText: obscurePassword,
+                        onTap: () {
+                          onTapTextField(
+                            signupCharacter,
+                            confirmPasswordController.text,
+                            textStyle,
+                            confirmPasswordWidgetKey,
+                            checkForPassword: true,
+                          );
+                        },
+                        onTapOutside: () {
+                          onTapOutsideTextField(signupCharacter);
+                        },
+                        textStyle: textStyle,
+                        onChanged: (String? text) {
+                          onTapTextField(
+                            signupCharacter,
+                            confirmPasswordController.text,
+                            textStyle,
+                            confirmPasswordWidgetKey,
+                            checkForPassword: true,
+                          );
+                        },
+                        onSecretChangeButtonPressed: (bool wasObscured) {
+                          setState(() {
+                            obscurePassword = !wasObscured;
+                            signupCharacter.isHandsUp = obscurePassword;
+                          });
+                        },
+                      ),
+                      CustomElevatedButton(
+                        onPressed: () {
+                          signupCharacter.isChecking = false;
+                          signupCharacter.isHandsUp = false;
+                        },
+                        child: const Text("Signup"),
+                      ),
+                    ].separate(10),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Already have an account? ",
+                        style: Theme.of(context).textTheme.labelMedium,
+                      ),
+                      CustomTextButton(
+                        onPressed: () {
+                          onTapOutsideTextField(signupCharacter);
+                          widget.onTapSignUp();
+                        },
+                        child: Text(
+                          "Login",
+                          style: Theme.of(context)
+                              .textTheme
+                              .labelMedium
+                              ?.copyWith(decoration: TextDecoration.underline),
+                        ),
+                      )
+                    ],
+                  )
+                ],
+              ),
             ),
           );
         });
