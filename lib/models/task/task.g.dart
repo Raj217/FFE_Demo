@@ -1,0 +1,21 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'task.dart';
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+_$TaskModelImpl _$$TaskModelImplFromJson(Map<String, dynamic> json) =>
+    _$TaskModelImpl(
+      id: json['_id'] as String?,
+      title: json['title'] as String,
+      description: json['description'] as String,
+    );
+
+Map<String, dynamic> _$$TaskModelImplToJson(_$TaskModelImpl instance) =>
+    <String, dynamic>{
+      '_id': instance.id,
+      'title': instance.title,
+      'description': instance.description,
+    };
