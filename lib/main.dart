@@ -19,7 +19,7 @@ class FFEDemoApp extends StatelessWidget {
         AuthScreen.route: (BuildContext context) => const AuthScreen(),
         Homepage.route: (BuildContext context) => const Homepage(),
       },
-      initialRoute: Homepage.route,
+      initialRoute: SplashScreen.route,
     );
   }
 }
