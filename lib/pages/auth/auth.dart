@@ -1,4 +1,5 @@
 import 'package:ffe_demo_app/pages/auth/login/login.dart';
+import 'package:ffe_demo_app/pages/auth/signup/signup.dart';
 import 'package:ffe_demo_app/pages/auth/widgets/login_character_animation.dart';
 import 'package:ffe_demo_app/states/states.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,7 @@ class _AuthScreenState extends State<AuthScreen> {
   @override
   void initState() {
     super.initState();
-    pageController = PageController(initialPage: 0);
+    pageController = PageController(initialPage: 1);
   }
 
   @override
@@ -31,7 +32,7 @@ class _AuthScreenState extends State<AuthScreen> {
   Widget build(BuildContext context) {
     Size screen = MediaQuery.of(context).size;
     return ChangeNotifierProvider(
-      create: (BuildContext context) => LoginCharacterStatesProvider(),
+      create: (BuildContext context) => SignupCharacterStatesProvider(),
       child: Builder(builder: (context) {
         return Scaffold(
           body: SafeArea(
@@ -53,7 +54,7 @@ class _AuthScreenState extends State<AuthScreen> {
                           width: 10,
                           color: Theme.of(context).scaffoldBackgroundColor,
                         ),
-                        LoginForm(
+                        SignupForm(
                           onTapSignUp: () {
                             pageController.animateToPage(
                               2,

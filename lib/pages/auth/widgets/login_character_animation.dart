@@ -14,7 +14,7 @@ class LoginCharacterAnimation extends StatelessWidget {
       child: RiveAnimation.asset(
         Assets.riveLoginCharacter,
         onInit:
-            Provider.of<LoginCharacterStatesProvider>(context, listen: false)
+            Provider.of<SignupCharacterStatesProvider>(context, listen: false)
                 .onInit,
       ),
     );
