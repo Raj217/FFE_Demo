@@ -1,3 +1,4 @@
+import 'package:ffe_demo_app/pages/home/homepage.dart';
 import 'package:ffe_demo_app/pages/pages.dart';
 import 'package:flutter/material.dart';
 import 'config/config.dart';
@@ -16,6 +17,7 @@ class FFEDemoApp extends StatelessWidget {
       routes: {
         SplashScreen.route: (BuildContext context) => const SplashScreen(),
         AuthScreen.route: (BuildContext context) => const AuthScreen(),
+        Homepage.route: (BuildContext context) => const Homepage(),
       },
       initialRoute: SplashScreen.route,
     );
