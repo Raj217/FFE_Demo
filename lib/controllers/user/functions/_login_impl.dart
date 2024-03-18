@@ -8,11 +8,11 @@ Future<UserControllerResponse> _loginImpl({
   Map body = {"mail": email, "password": password};
   String bodyEncoded = jsonEncode(body);
 
-  Response response = await NetworkEngine.getDio().get(
+  Response response = await NetworkEngine.getDio().post(
     UserController._getLoginPath(),
     data: bodyEncoded,
   );
-  if (response.statusCode == 200) {
+  if (response.statusCode == 200 || response.statusCode == 201) {
     UserModel user = UserModel.fromJson(response.data["user"]);
     String token = response.data["token"];
 

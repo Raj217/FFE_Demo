@@ -20,7 +20,6 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserModel {
-  @JsonKey(name: '_id')
   String? get id => throw _privateConstructorUsedError;
   String get username => throw _privateConstructorUsedError;
   String get mail => throw _privateConstructorUsedError;
@@ -36,7 +35,7 @@ abstract class $UserModelCopyWith<$Res> {
   factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) then) =
       _$UserModelCopyWithImpl<$Res, UserModel>;
   @useResult
-  $Res call({@JsonKey(name: '_id') String? id, String username, String mail});
+  $Res call({String? id, String username, String mail});
 }
 
 /// @nodoc
@@ -81,7 +80,7 @@ abstract class _$$UserModelImplCopyWith<$Res>
       __$$UserModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: '_id') String? id, String username, String mail});
+  $Res call({String? id, String username, String mail});
 }
 
 /// @nodoc
@@ -119,17 +118,13 @@ class __$$UserModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$UserModelImpl extends _UserModel {
-  const _$UserModelImpl(
-      {@JsonKey(name: '_id') this.id,
-      required this.username,
-      required this.mail})
+  const _$UserModelImpl({this.id, required this.username, required this.mail})
       : super._();
 
   factory _$UserModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserModelImplFromJson(json);
 
   @override
-  @JsonKey(name: '_id')
   final String? id;
   @override
   final String username;
@@ -172,7 +167,7 @@ class _$UserModelImpl extends _UserModel {
 
 abstract class _UserModel extends UserModel {
   const factory _UserModel(
-      {@JsonKey(name: '_id') final String? id,
+      {final String? id,
       required final String username,
       required final String mail}) = _$UserModelImpl;
   const _UserModel._() : super._();
@@ -181,7 +176,6 @@ abstract class _UserModel extends UserModel {
       _$UserModelImpl.fromJson;
 
   @override
-  @JsonKey(name: '_id')
   String? get id;
   @override
   String get username;

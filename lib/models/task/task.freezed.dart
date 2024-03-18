@@ -20,7 +20,6 @@ TaskModel _$TaskModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TaskModel {
-  @JsonKey(name: '_id')
   String? get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
@@ -36,8 +35,7 @@ abstract class $TaskModelCopyWith<$Res> {
   factory $TaskModelCopyWith(TaskModel value, $Res Function(TaskModel) then) =
       _$TaskModelCopyWithImpl<$Res, TaskModel>;
   @useResult
-  $Res call(
-      {@JsonKey(name: '_id') String? id, String title, String description});
+  $Res call({String? id, String title, String description});
 }
 
 /// @nodoc
@@ -82,8 +80,7 @@ abstract class _$$TaskModelImplCopyWith<$Res>
       __$$TaskModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: '_id') String? id, String title, String description});
+  $Res call({String? id, String title, String description});
 }
 
 /// @nodoc
@@ -122,16 +119,13 @@ class __$$TaskModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$TaskModelImpl extends _TaskModel {
   const _$TaskModelImpl(
-      {@JsonKey(name: '_id') this.id,
-      required this.title,
-      required this.description})
+      {this.id, required this.title, required this.description})
       : super._();
 
   factory _$TaskModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$TaskModelImplFromJson(json);
 
   @override
-  @JsonKey(name: '_id')
   final String? id;
   @override
   final String title;
@@ -174,7 +168,7 @@ class _$TaskModelImpl extends _TaskModel {
 
 abstract class _TaskModel extends TaskModel {
   const factory _TaskModel(
-      {@JsonKey(name: '_id') final String? id,
+      {final String? id,
       required final String title,
       required final String description}) = _$TaskModelImpl;
   const _TaskModel._() : super._();
@@ -183,7 +177,6 @@ abstract class _TaskModel extends TaskModel {
       _$TaskModelImpl.fromJson;
 
   @override
-  @JsonKey(name: '_id')
   String? get id;
   @override
   String get title;

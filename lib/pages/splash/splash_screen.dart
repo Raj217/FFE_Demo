@@ -18,8 +18,8 @@ class _SplashScreenState extends State<SplashScreen> {
   Future<void> init() async {
     await dotenv.load();
 
-    bool isLoggedIn = await Provider.of<AuthProvider>(context, listen: false)
-        .checkIfUserIsLoggedIn();
+    bool isLoggedIn =
+        await Provider.of<AuthProvider>(context, listen: false).loginSilently();
 
     if (isLoggedIn) {
       if (mounted) {

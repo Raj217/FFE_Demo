@@ -12,7 +12,7 @@ class AuthProvider extends ChangeNotifier {
   String? get token => _token;
   SharedPreferences? prefs;
 
-  Future<bool> checkIfUserIsLoggedIn() async {
+  Future<bool> loginSilently() async {
     prefs ??= await SharedPreferences.getInstance();
 
     String? token = prefs!.getString(LocalStorageKeys.token.name);

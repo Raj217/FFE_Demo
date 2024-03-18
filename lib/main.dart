@@ -15,8 +15,15 @@ class FFEDemoApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (BuildContext context) => AuthProvider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (BuildContext context) => AuthProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (BuildContext context) => TasksProvider(),
+        ),
+      ],
       child: MaterialApp(
         theme: lightTheme,
         routes: {

@@ -6,20 +6,15 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 /// This class is responsible for providing a medium to connect between the app
 /// and the API.
 class NetworkEngine {
-  static Dio?
-      dio; // Ensuring the dio is created only once and is reused again and again throughout the app.
-
   NetworkEngine._();
 
   static Dio getDio({
     Map<String, dynamic>? headers,
   }) {
-    if (dio != null) return dio!;
-
     // The line below retrieves the value of BASE_URL from .env
     String baseURL = dotenv.env[EnvValues.BASE_URL.name]!;
     // Sets up some basic values for dio.
-    dio = Dio(
+    Dio dio = Dio(
       BaseOptions(
         headers: {'content-type': "application/json", ...(headers ?? {})},
         baseUrl: baseURL,
@@ -46,7 +41,7 @@ class NetworkEngine {
           debugPrint('''
         ******************************************************************************************************
 
-        ${request.method} || ${request.baseUrl}${request.path} ||| ${request.data}
+        ${request.method} || ${request.baseUrl}${request.path} ||| ${request.data} || ${request.headers}
 
         ******************************************************************************************************
         ''');
