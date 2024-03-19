@@ -1,4 +1,3 @@
-import 'package:ffe_demo_app/controllers/task/task_controller.dart';
 import 'package:ffe_demo_app/models/task/task.dart';
 import 'package:ffe_demo_app/pages/home/widgets/appbar.dart';
 import 'package:ffe_demo_app/pages/home/widgets/create_overlay.dart';
