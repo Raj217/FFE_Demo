@@ -1,4 +1,3 @@
-import 'package:ffe_demo_app/pages/home/homepage.dart';
 import 'package:ffe_demo_app/states/auth/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ffe_demo_app/config/config.dart';
@@ -20,7 +19,13 @@ class _SplashScreenState extends State<SplashScreen> {
 
     bool isLoggedIn =
         await Provider.of<AuthProvider>(context, listen: false).loginSilently();
-
+    Future.delayed(Duration(seconds: 3), () {
+      logo = Assets.appLogo;
+      sub = "Task Zen";
+      logoSize = 0.5;
+      textSize = 0.1;
+      setState(() {});
+    });
     Future.delayed(Duration(seconds: 5), () {
       if (isLoggedIn) {
         if (mounted) {
@@ -48,16 +53,30 @@ class _SplashScreenState extends State<SplashScreen> {
     init();
   }
 
+  var logo = Assets.gdscLogo;
+  var sub = "presents";
+  var logoSize = 0.8;
+  var textSize = 0.04;
+
   @override
   Widget build(BuildContext context) {
     Size screen = MediaQuery.of(context).size;
     return Scaffold(
       body: Center(
-        child: ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: screen.width * .8),
-          child: Image.asset(
-            Assets.gdscLogo,
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ConstrainedBox(
+              constraints: BoxConstraints(maxWidth: screen.width * logoSize),
+              child: Image.asset(
+                logo,
+              ),
+            ),
+            Text(
+              sub,
+              style: TextStyle(fontSize: screen.width * textSize),
+            )
+          ],
         ),
       ),
     );

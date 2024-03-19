@@ -3,6 +3,7 @@ class Assets {
   const Assets._();
 
   static const String gdscLogo = "assets/images/GDSC.png";
+  static const String appLogo = "assets/images/app_logo.png";
 
   static const String riveAuthCharacter =
       "assets/rive/animated_login_character.riv";
