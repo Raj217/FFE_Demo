@@ -21,23 +21,25 @@ class _SplashScreenState extends State<SplashScreen> {
     bool isLoggedIn =
         await Provider.of<AuthProvider>(context, listen: false).loginSilently();
 
-    if (isLoggedIn) {
-      if (mounted) {
-        Navigator.pushNamedAndRemoveUntil(
-          context,
-          Homepage.route,
-          (route) => false,
-        );
+    Future.delayed(Duration(seconds: 5), () {
+      if (isLoggedIn) {
+        if (mounted) {
+          Navigator.pushNamedAndRemoveUntil(
+            context,
+            Homepage.route,
+            (route) => false,
+          );
+        }
+      } else {
+        if (mounted) {
+          Navigator.pushNamedAndRemoveUntil(
+            context,
+            AuthScreen.route,
+            (route) => false,
+          );
+        }
       }
-    } else {
-      if (mounted) {
-        Navigator.pushNamedAndRemoveUntil(
-          context,
-          AuthScreen.route,
-          (route) => false,
-        );
-      }
-    }
+    });
   }
 
   @override

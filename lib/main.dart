@@ -1,4 +1,3 @@
-import 'package:ffe_demo_app/pages/home/homepage.dart';
 import 'package:ffe_demo_app/pages/pages.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -25,6 +24,7 @@ class FFEDemoApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         theme: lightTheme,
         routes: {
           SplashScreen.route: (BuildContext context) => const SplashScreen(),
